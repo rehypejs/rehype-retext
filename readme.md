@@ -93,7 +93,7 @@ plug-ins (mutate-mode).
 
 As HTML defines paragraphs, that definition is used for NLCST
 `ParagraphNode`s: `<p>` and `<h1-6>` are explicitly supported,
-and implicit paragraphs in flow content is also supported.
+and implicit paragraphs in flow content are also supported.
 
 ## License
 
