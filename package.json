@@ -1,0 +1,64 @@
+{
+  "name": "rehype-retext",
+  "version": "0.0.0",
+  "description": "retext support for rehype",
+  "license": "MIT",
+  "keywords": [
+    "rehype",
+    "retext",
+    "hast",
+    "nlcst"
+  ],
+  "files": [
+    "index.js"
+  ],
+  "repository": "https://github.com/wooorm/rehype-retext",
+  "bugs": "https://github.com/wooorm/rehype-retext/issues",
+  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+  ],
+  "dependencies": {
+    "hast-util-to-nlcst": "^1.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "esmangle": "^1.0.1",
+    "nyc": "^8.3.0",
+    "rehype-parse": "^2.0.0",
+    "rehype-stringify": "^2.0.0",
+    "remark-cli": "^2.0.0",
+    "remark-preset-wooorm": "^1.0.0",
+    "retext-english": "^2.0.0",
+    "retext-stringify": "^1.0.0",
+    "tape": "^4.0.0",
+    "unified": "^5.0.0",
+    "xo": "^0.16.0"
+  },
+  "scripts": {
+    "build-md": "remark . --quiet --frail",
+    "build-bundle": "browserify index.js --bare -s rehypeRetext > rehype-retext.js",
+    "build-mangle": "esmangle rehype-retext.js > rehype-retext.min.js",
+    "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
+    "lint": "xo",
+    "test-api": "node test.js",
+    "test-coverage": "nyc --reporter lcov tape test.js",
+    "test": "npm run build && npm run lint && npm run test-coverage"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100
+  },
+  "xo": {
+    "space": true,
+    "ignores": [
+      "rehype-retext.js"
+    ]
+  },
+  "remarkConfig": {
+    "output": true,
+    "presets": "wooorm"
+  }
+}
