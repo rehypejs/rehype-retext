@@ -1,14 +1,5 @@
-/**
- * @author Titus Wormer
- * @copyright 2016 Titus Wormer
- * @license MIT
- * @module rehype-retext
- * @fileoverview Test suite for `rehype-retext`.
- */
-
 'use strict';
 
-/* Dependencies. */
 var test = require('tape');
 var unified = require('unified');
 var parse = require('rehype-parse');
@@ -30,7 +21,6 @@ var doc = [
   '</html>'
 ].join('\n');
 
-/* Tests. */
 test('rehype2retext()', function (t) {
   t.equal(
     unified()
