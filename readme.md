@@ -49,7 +49,7 @@ unified()
   )
   .use(minify)
   .use(stringify)
-  .process(file, minify.config, function (err) {
+  .process(file, function (err) {
     console.error(report(err || file));
     console.log(String(file));
   });

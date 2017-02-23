@@ -27,7 +27,7 @@ test('rehype2retext()', function (t) {
       .use(parse, {fragment: true})
       .use(rehype2retext, english.Parser)
       .use(naturalLanguage)
-      .process(doc)
+      .processSync(doc)
       .toString(),
     'Bravo',
     'should mutate'
@@ -38,7 +38,7 @@ test('rehype2retext()', function (t) {
       .use(parse)
       .use(rehype2retext, unified().use(english))
       .use(html)
-      .process(doc)
+      .processSync(doc)
       .toString(),
     [
       '<!DOCTYPE html><html><head>',
