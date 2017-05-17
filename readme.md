@@ -12,7 +12,7 @@ npm install rehype-retext
 
 ## Usage
 
-Say we have `example.html`:
+Say `example.md` looks as follows:
 
 ```html
 <!doctype html>
@@ -24,21 +24,19 @@ Say we have `example.html`:
 </article>
 ```
 
-And `index.js`:
+...and `example.js` like this:
 
 ```javascript
+var vfile = require('to-vfile');
+var report = require('vfile-reporter');
 var unified = require('unified');
 var parse = require('rehype-parse');
+var minify = require('rehype-preset-minify');
+var stringify = require('rehype-stringify');
 var rehype2retext = require('rehype-retext');
 var english = require('retext-english');
 var indefinite = require('retext-indefinite-article');
 var repeated = require('retext-repeated-words');
-var stringify = require('rehype-stringify');
-var minify = require('rehype-preset-minify');
-var vfile = require('to-vfile');
-var report = require('vfile-reporter');
-
-var file = vfile.readSync('example.html');
 
 unified()
   .use(parse)
@@ -49,25 +47,20 @@ unified()
   )
   .use(minify)
   .use(stringify)
-  .process(file, function (err) {
+  .process(vfile.readSync('example.html'), function (err, file) {
     console.error(report(err || file));
     console.log(String(file));
   });
 ```
 
-Running `node index.js` yields, on **stderr**(4):
+Now, running `node example` yields:
 
-```txt
+```html
 example.html
     5:3-5:4  warning  Use `An` before `implicit`, not `A`  retext-indefinite-article  retext-indefinite-article
   6:12-6:19  warning  Expected `and` once, not twice       retext-repeated-words      retext-repeated-words
 
 ⚠ 2 warnings
-```
-
-...and, on **stdout**(4):
-
-```txt
 <!DOCTYPE html><meta charset=utf8><title>Hello!</title><article>A implicit sentence.<h1>This and and that.</h1></article>
 ```
 
