@@ -2,6 +2,9 @@
 
 Bridge / mutate from [**rehype**][rehype] to [**retext**][retext].
 
+Uses [`hast-util-to-nlcst`][hast-util-to-nlcst] under the hood.  See its
+documentation to learn how to ignore nodes.
+
 ## Installation
 
 [npm][]:
@@ -134,3 +137,5 @@ and implicit paragraphs in flow content are also supported.
 [english]: https://github.com/wooorm/parse-english
 
 [dutch]: https://github.com/wooorm/parse-dutch
+
+[hast-util-to-nlcst]: https://github.com/syntax-tree/hast-util-to-nlcst
