@@ -88,6 +88,15 @@ As HTML defines paragraphs, that definition is used for NLCST
 `ParagraphNode`s: `<p>` and `<h1-6>` are explicitly supported,
 and implicit paragraphs in flow content are also supported.
 
+## Related
+
+*   [`rehype-remark`](https://github.com/wooorm/rehype-remark)
+    — Transform HTML to markdown
+*   [`remark-rehype`](https://github.com/wooorm/remark-rehype)
+    — Transform markdown to HTML
+*   [`remark-retext`](https://github.com/wooorm/remark-retext)
+    — Transform markdown to [NLCST][]
+
 ## License
 
 [MIT][license] © [Titus Wormer][author]
