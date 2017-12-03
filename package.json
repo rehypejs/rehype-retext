@@ -9,8 +9,8 @@
     "hast",
     "nlcst"
   ],
-  "repository": "https://github.com/wooorm/rehype-retext",
-  "bugs": "https://github.com/wooorm/rehype-retext/issues",
+  "repository": "rehypejs/rehype-retext",
+  "bugs": "https://github.com/rehypejs/rehype-retext/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
@@ -59,6 +59,8 @@
     ]
   },
   "remarkConfig": {
-    "plugins": ["preset-wooorm"]
+    "plugins": [
+      "preset-wooorm"
+    ]
   }
 }

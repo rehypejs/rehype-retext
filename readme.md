@@ -93,7 +93,7 @@ and implicit paragraphs in flow content are also supported.
 
 ## Related
 
-*   [`rehype-remark`](https://github.com/wooorm/rehype-remark)
+*   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
     — Transform HTML to markdown
 *   [`remark-rehype`](https://github.com/wooorm/remark-rehype)
     — Transform markdown to HTML
@@ -106,13 +106,13 @@ and implicit paragraphs in flow content are also supported.
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/wooorm/rehype-retext.svg
+[travis-badge]: https://img.shields.io/travis/rehypejs/rehype-retext.svg
 
-[travis]: https://travis-ci.org/wooorm/rehype-retext
+[travis]: https://travis-ci.org/rehypejs/rehype-retext
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/rehype-retext.svg
+[codecov-badge]: https://img.shields.io/codecov/c/github/rehypejs/rehype-retext.svg
 
-[codecov]: https://codecov.io/github/wooorm/rehype-retext
+[codecov]: https://codecov.io/github/rehypejs/rehype-retext
 
 [npm]: https://docs.npmjs.com/cli/install
 
@@ -120,17 +120,17 @@ and implicit paragraphs in flow content are also supported.
 
 [author]: http://wooorm.com
 
-[hast]: https://github.com/wooorm/hast
+[hast]: https://github.com/syntax-tree/hast
 
-[rehype]: https://github.com/wooorm/rehype
+[rehype]: https://github.com/rehypejs/rehype
 
 [retext]: https://github.com/wooorm/retext
 
-[processor]: https://github.com/wooorm/unified#processor
+[processor]: https://github.com/unifiedjs/unified#processor
 
-[bridge]: https://github.com/wooorm/unified#bridge
+[bridge]: https://github.com/unifiedjs/unified#processing-between-syntaxes
 
-[nlcst]: https://github.com/wooorm/nlcst
+[nlcst]: https://github.com/syntax-tree/nlcst
 
 [latin]: https://github.com/wooorm/parse-latin
 
