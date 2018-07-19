@@ -41,7 +41,7 @@ test('rehype2retext()', function (t) {
       .processSync(doc)
       .toString(),
     [
-      '<!DOCTYPE html><html><head>',
+      '<!doctype html><html><head>',
       '    <meta charset="utf8">',
       '    <title>Alpha</title>',
       '  </head>',

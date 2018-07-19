@@ -64,7 +64,7 @@ example.html
   6:12-6:19  warning  Expected `and` once, not twice       retext-repeated-words      retext-repeated-words
 
 ⚠ 2 warnings
-<!DOCTYPE html><meta charset=utf8><title>Hello!</title><article>A implicit sentence.<h1>This and and that.</h1></article>
+<!doctype html><meta charset=utf8><title>Hello!</title><article>A implicit sentence.<h1>This and and that.</h1></article>
 ```
 
 ## API
