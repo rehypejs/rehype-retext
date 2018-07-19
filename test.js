@@ -6,7 +6,7 @@ var parse = require('rehype-parse');
 var english = require('retext-english');
 var html = require('rehype-stringify');
 var naturalLanguage = require('retext-stringify');
-var rehype2retext = require('./index.js');
+var rehype2retext = require('.');
 
 var doc = [
   '<!doctype html>',
