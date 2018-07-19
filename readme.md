@@ -30,30 +30,32 @@ Say `example.md` looks as follows:
 ...and `example.js` like this:
 
 ```javascript
-var vfile = require('to-vfile');
-var report = require('vfile-reporter');
-var unified = require('unified');
-var parse = require('rehype-parse');
-var minify = require('rehype-preset-minify');
-var stringify = require('rehype-stringify');
-var rehype2retext = require('rehype-retext');
-var english = require('retext-english');
-var indefinite = require('retext-indefinite-article');
-var repeated = require('retext-repeated-words');
+var vfile = require('to-vfile')
+var report = require('vfile-reporter')
+var unified = require('unified')
+var parse = require('rehype-parse')
+var minify = require('rehype-preset-minify')
+var stringify = require('rehype-stringify')
+var rehype2retext = require('rehype-retext')
+var english = require('retext-english')
+var indefinite = require('retext-indefinite-article')
+var repeated = require('retext-repeated-words')
 
 unified()
   .use(parse)
-  .use(rehype2retext, unified()
-    .use(english)
-    .use(indefinite)
-    .use(repeated)
+  .use(
+    rehype2retext,
+    unified()
+      .use(english)
+      .use(indefinite)
+      .use(repeated)
   )
   .use(minify)
   .use(stringify)
-  .process(vfile.readSync('example.html'), function (err, file) {
-    console.error(report(err || file));
-    console.log(String(file));
-  });
+  .process(vfile.readSync('example.html'), function(err, file) {
+    console.error(report(err || file))
+    console.log(String(file))
+  })
 ```
 
 Now, running `node example` yields:

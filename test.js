@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-var test = require('tape');
-var unified = require('unified');
-var parse = require('rehype-parse');
-var english = require('retext-english');
-var html = require('rehype-stringify');
-var naturalLanguage = require('retext-stringify');
-var rehype2retext = require('.');
+var test = require('tape')
+var unified = require('unified')
+var parse = require('rehype-parse')
+var english = require('retext-english')
+var html = require('rehype-stringify')
+var naturalLanguage = require('retext-stringify')
+var rehype2retext = require('.')
 
 var doc = [
   '<!doctype html>',
@@ -19,9 +19,9 @@ var doc = [
   '    <p>Bravo</p>',
   '  </head>',
   '</html>'
-].join('\n');
+].join('\n')
 
-test('rehype2retext()', function (t) {
+test('rehype2retext()', function(t) {
   t.equal(
     unified()
       .use(parse, {fragment: true})
@@ -31,7 +31,7 @@ test('rehype2retext()', function (t) {
       .toString(),
     'Bravo',
     'should mutate'
-  );
+  )
 
   t.equal(
     unified()
@@ -51,7 +51,7 @@ test('rehype2retext()', function (t) {
       '</body></html>'
     ].join('\n'),
     'should bridge'
-  );
+  )
 
-  t.end();
-});
+  t.end()
+})
