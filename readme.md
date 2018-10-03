@@ -15,7 +15,7 @@ npm install rehype-retext
 
 ## Usage
 
-Say `example.md` looks as follows:
+Say `example.html` looks as follows:
 
 ```html
 <!doctype html>
