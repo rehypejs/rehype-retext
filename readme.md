@@ -1,4 +1,9 @@
-# rehype-retext [![Build Status][travis-badge]][travis] [![Coverage Status][codecov-badge]][codecov]
+# rehype-retext
+
+[![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
+[![Downloads][downloads-badge]][downloads]
+[![Chat][chat-badge]][chat]
 
 Bridge / mutate from [**rehype**][rehype] to [**retext**][retext].
 
@@ -116,13 +121,21 @@ repository, organisation, or community you agree to abide by its terms.
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/rehypejs/rehype-retext.svg
+[build-badge]: https://img.shields.io/travis/rehypejs/rehype-retext.svg
 
-[travis]: https://travis-ci.org/rehypejs/rehype-retext
+[build]: https://travis-ci.org/rehypejs/rehype-retext
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/rehypejs/rehype-retext.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/rehypejs/rehype-retext.svg
 
-[codecov]: https://codecov.io/github/rehypejs/rehype-retext
+[coverage]: https://codecov.io/github/rehypejs/rehype-retext
+
+[downloads-badge]: https://img.shields.io/npm/dm/rehype-retext.svg
+
+[downloads]: https://www.npmjs.com/package/rehype-retext
+
+[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+
+[chat]: https://spectrum.chat/unified/rehype
 
 [npm]: https://docs.npmjs.com/cli/install
 
