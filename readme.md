@@ -101,6 +101,11 @@ As HTML defines paragraphs, that definition is used for
 [**Paragraph**][paragraph]s: `<p>` and `<h1-6>` are explicitly
 supported, and implicit paragraphs in flow content are also supported.
 
+## Security
+
+`rehype-retext` does not change the syntax tree so there are no openings for
+[cross-site scripting (XSS)][xss] attacks.
+
 ## Related
 
 *   [`rehype-remark`](https://github.com/rehypejs/rehype-retext)
@@ -190,3 +195,5 @@ abide by its terms.
 [english]: https://github.com/wooorm/parse-english
 
 [dutch]: https://github.com/wooorm/parse-dutch
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
