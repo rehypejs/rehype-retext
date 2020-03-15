@@ -6,7 +6,12 @@
   "keywords": [
     "unified",
     "rehype",
+    "rehype-plugin",
     "retext",
+    "retext-plugin",
+    "html",
+    "natural",
+    "langauge",
     "hast",
     "nlcst"
   ],
