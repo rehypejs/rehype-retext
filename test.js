@@ -21,7 +21,7 @@ var doc = [
   '</html>'
 ].join('\n')
 
-test('rehype2retext()', function(t) {
+test('rehype2retext()', function (t) {
   t.equal(
     unified()
       .use(parse, {fragment: true})
