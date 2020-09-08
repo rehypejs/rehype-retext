@@ -108,7 +108,7 @@ supported, and implicit paragraphs in flow content are also supported.
 
 ## Related
 
-*   [`rehype-remark`](https://github.com/rehypejs/rehype-retext)
+*   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
     — Transform HTML ([**hast**][hast]) to Markdown ([**mdast**][mdast])
 *   [`remark-retext`](https://github.com/remarkjs/remark-retext)
     — Transform Markdown ([**mdast**][mdast]) to natural language
