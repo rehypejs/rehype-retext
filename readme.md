@@ -132,9 +132,9 @@ abide by its terms.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/rehypejs/rehype-retext.svg
+[build-badge]: https://github.com/rehypejs/rehype-retext/workflows/main/badge.svg
 
-[build]: https://travis-ci.org/rehypejs/rehype-retext
+[build]: https://github.com/rehypejs/rehype-retext/actions
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/rehypejs/rehype-retext.svg
 
