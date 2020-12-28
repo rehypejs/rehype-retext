@@ -10,8 +10,9 @@ module.exports = rehype2retext
 // If a parser is given, returns the nlcst tree: further plugins run on that
 // tree (mutate-mode).
 function rehype2retext(destination) {
-  var fn = destination && destination.run ? bridge : mutate
-  return fn(destination)
+  return destination && destination.run
+    ? bridge(destination)
+    : mutate(destination)
 }
 
 // Mutate-mode.
@@ -28,10 +29,11 @@ function mutate(parser) {
 function bridge(destination) {
   return transformer
   function transformer(node, file, next) {
-    var Parser = destination.freeze().Parser
-    var tree = hast2nlcst(node, file, Parser)
-
-    destination.run(tree, file, done)
+    destination.run(
+      hast2nlcst(node, file, destination.freeze().Parser),
+      file,
+      done
+    )
 
     function done(err) {
       next(err)
