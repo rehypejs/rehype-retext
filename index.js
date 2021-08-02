@@ -1,15 +1,11 @@
-'use strict'
-
-var hast2nlcst = require('hast-util-to-nlcst')
-
-module.exports = rehype2retext
+import hast2nlcst from 'hast-util-to-nlcst'
 
 // Attacher.
 // If a destination processor is given, runs the destination with the new nlcst
 // tree (bridge-mode).
 // If a parser is given, returns the nlcst tree: further plugins run on that
 // tree (mutate-mode).
-function rehype2retext(destination) {
+export default function rehypeRetext(destination) {
   return destination && destination.run
     ? bridge(destination)
     : mutate(destination)
@@ -35,8 +31,8 @@ function bridge(destination) {
       done
     )
 
-    function done(err) {
-      next(err)
+    function done(error) {
+      next(error)
     }
   }
 }

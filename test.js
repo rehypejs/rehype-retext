@@ -1,12 +1,10 @@
-'use strict'
-
-var test = require('tape')
-var unified = require('unified')
-var parse = require('rehype-parse')
-var english = require('retext-english')
-var html = require('rehype-stringify')
-var naturalLanguage = require('retext-stringify')
-var rehype2retext = require('.')
+import test from 'tape'
+import unified from 'unified'
+import rehypeParse from 'rehype-parse'
+import retextEnglish from 'retext-english'
+import rehypeStringify from 'rehype-stringify'
+import retextStringify from 'retext-stringify'
+import rehypeRetext from './index.js'
 
 var doc = [
   '<!doctype html>',
@@ -21,12 +19,12 @@ var doc = [
   '</html>'
 ].join('\n')
 
-test('rehype2retext()', function (t) {
+test('rehypeRetext', function (t) {
   t.equal(
     unified()
-      .use(parse, {fragment: true})
-      .use(rehype2retext, english.Parser)
-      .use(naturalLanguage)
+      .use(rehypeParse, {fragment: true})
+      .use(rehypeRetext, retextEnglish.Parser)
+      .use(retextStringify)
       .processSync(doc)
       .toString(),
     'Bravo',
@@ -35,9 +33,9 @@ test('rehype2retext()', function (t) {
 
   t.equal(
     unified()
-      .use(parse)
-      .use(rehype2retext, unified().use(english))
-      .use(html)
+      .use(rehypeParse)
+      .use(rehypeRetext, unified().use(retextEnglish))
+      .use(rehypeStringify)
       .processSync(doc)
       .toString(),
     [
