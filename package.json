@@ -48,12 +48,9 @@
   },
   "scripts": {
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
-    "build-bundle": "browserify . -s rehypeRetext -o rehype-retext.js",
-    "build-mangle": "browserify . -s rehypeRetext -o rehype-retext.min.js -p tinyify",
-    "build": "npm run build-bundle && npm run build-mangle",
     "test-api": "node --conditions development test.js",
     "test-coverage": "c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov node --conditions development test.js",
-    "test": "npm run format && npm run build && npm run test-coverage"
+    "test": "npm run format && npm run test-coverage"
   },
   "prettier": {
     "tabWidth": 2,
@@ -65,10 +62,7 @@
   },
   "xo": {
     "prettier": true,
-    "esnext": false,
-    "ignores": [
-      "rehype-retext.js"
-    ]
+    "esnext": false
   },
   "remarkConfig": {
     "plugins": [

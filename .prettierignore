@@ -1,5 +1,2 @@
 coverage/
-rehype-retext.js
-rehype-retext.min.js
-*.json
 *.md

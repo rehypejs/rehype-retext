@@ -2,6 +2,4 @@ coverage/
 node_modules/
 .DS_Store
 *.log
-rehype-retext.js
-rehype-retext.min.js
 yarn.lock
