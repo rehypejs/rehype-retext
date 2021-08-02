@@ -15,6 +15,9 @@ See its documentation to learn how to ignore nodes.
 
 ## Install
 
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
+Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
+
 [npm][]:
 
 ```sh
@@ -38,30 +41,33 @@ Say `example.html` looks as follows:
 …and `example.js` like this:
 
 ```js
-var vfile = require('to-vfile')
-var report = require('vfile-reporter')
-var unified = require('unified')
-var parse = require('rehype-parse')
-var minify = require('rehype-preset-minify')
-var stringify = require('rehype-stringify')
-var rehype2retext = require('rehype-retext')
-var english = require('retext-english')
-var indefinite = require('retext-indefinite-article')
-var repeated = require('retext-repeated-words')
+import {readSync} from 'to-vfile'
+import {reporter} from 'vfile-reporter'
+import {unified} from 'unified'
+import rehypeParse from 'rehype-parse'
+import rehypePresetMinify from 'rehype-preset-minify'
+import rehypeStringify from 'rehype-stringify'
+import rehypeRetext from 'rehype-retext'
+import retextEnglish from 'retext-english'
+import retextIndefiniteArticle from 'retext-indefinite-article'
+import retextRepeatedWords from 'retext-repeated-words'
+
+const file = readSync('example.html')
 
 unified()
-  .use(parse)
+  .use(rehypeParse)
   .use(
-    rehype2retext,
+    rehypeRetext,
     unified()
-      .use(english)
-      .use(indefinite)
-      .use(repeated)
+      .use(retextEnglish)
+      .use(retextIndefiniteArticle)
+      .use(retextRepeatedWords)
   )
-  .use(minify)
-  .use(stringify)
-  .process(vfile.readSync('example.html'), function(err, file) {
-    console.error(report(err || file))
+  .use(rehypePresetMinify)
+  .use(rehypeStringify)
+  .process(file)
+  .then((file) => {
+    console.error(reporter(file))
     console.log(String(file))
   })
 ```
@@ -71,15 +77,18 @@ Now, running `node example` yields:
 ```html
 example.html
     5:3-5:4  warning  Use `An` before `implicit`, not `A`  retext-indefinite-article  retext-indefinite-article
-  6:12-6:19  warning  Expected `and` once, not twice       retext-repeated-words      retext-repeated-words
+  6:12-6:19  warning  Expected `and` once, not twice       and                        retext-repeated-words
 
 ⚠ 2 warnings
-<!doctype html><meta charset=utf8><title>Hello!</title><article>A implicit sentence.<h1>This and and that.</h1></article>
+<!doctypehtml><meta charset=utf8><title>Hello!</title><article>A implicit sentence.<h1>This and and that.</h1></article>
 ```
 
 ## API
 
-### `origin.use(rehype2retext, destination)`
+This package exports no identifiers.
+The default export is `rehypeRetext`.
+
+### `unified().use(rehypeRetext, destination)`
 
 [**rehype**][rehype] ([hast][]) plugin to bridge or mutate to
 [**retext**][retext] ([nlcst][]).
