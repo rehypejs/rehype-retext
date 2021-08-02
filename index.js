@@ -1,4 +1,4 @@
-import hast2nlcst from 'hast-util-to-nlcst'
+import {toNlcst} from 'hast-util-to-nlcst'
 
 // Attacher.
 // If a destination processor is given, runs the destination with the new nlcst
@@ -16,7 +16,7 @@ export default function rehypeRetext(destination) {
 function mutate(parser) {
   return transformer
   function transformer(node, file) {
-    return hast2nlcst(node, file, parser)
+    return toNlcst(node, file, parser)
   }
 }
 
@@ -26,7 +26,7 @@ function bridge(destination) {
   return transformer
   function transformer(node, file, next) {
     destination.run(
-      hast2nlcst(node, file, destination.freeze().Parser),
+      toNlcst(node, file, destination.freeze().Parser),
       file,
       done
     )

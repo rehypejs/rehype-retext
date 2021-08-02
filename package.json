@@ -32,7 +32,7 @@
     "index.js"
   ],
   "dependencies": {
-    "hast-util-to-nlcst": "^1.0.0"
+    "hast-util-to-nlcst": "^2.0.0"
   },
   "devDependencies": {
     "c8": "^7.0.0",
