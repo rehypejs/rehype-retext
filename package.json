@@ -1,6 +1,6 @@
 {
   "name": "rehype-retext",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "rehype plugin to transform to retext",
   "license": "MIT",
   "keywords": [
