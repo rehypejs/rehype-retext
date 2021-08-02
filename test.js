@@ -1,7 +1,7 @@
 import test from 'tape'
-import unified from 'unified'
+import {unified} from 'unified'
 import rehypeParse from 'rehype-parse'
-import retextEnglish from 'retext-english'
+import retextEnglish, {Parser as RetextEnglish} from 'retext-english'
 import rehypeStringify from 'rehype-stringify'
 import retextStringify from 'retext-stringify'
 import rehypeRetext from './index.js'
@@ -23,7 +23,7 @@ test('rehypeRetext', function (t) {
   t.equal(
     unified()
       .use(rehypeParse, {fragment: true})
-      .use(rehypeRetext, retextEnglish.Parser)
+      .use(rehypeRetext, RetextEnglish)
       .use(retextStringify)
       .processSync(doc)
       .toString(),
