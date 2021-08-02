@@ -6,7 +6,7 @@ import rehypeStringify from 'rehype-stringify'
 import retextStringify from 'retext-stringify'
 import rehypeRetext from './index.js'
 
-var doc = [
+const doc = [
   '<!doctype html>',
   '<html>',
   '  <head>',
@@ -19,7 +19,7 @@ var doc = [
   '</html>'
 ].join('\n')
 
-test('rehypeRetext', function (t) {
+test('rehypeRetext', (t) => {
   t.equal(
     unified()
       .use(rehypeParse, {fragment: true})
