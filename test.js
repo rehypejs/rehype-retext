@@ -20,6 +20,15 @@ const doc = [
 ].join('\n')
 
 test('rehypeRetext', (t) => {
+  t.throws(
+    () => {
+      // @ts-expect-error: runtime.
+      unified().use(rehypeRetext).freeze()
+    },
+    /Expected `parser` \(such as from `retext-english` or `parse-english`\) or `processor` \(a unified pipeline\) as `options`/,
+    'should throw when w/o parser or processor'
+  )
+
   t.equal(
     unified()
       .use(rehypeParse, {fragment: true})

@@ -44,6 +44,12 @@ export default rehypeRetext
  * @type {import('unified').Plugin<[Parser], HastRoot, Node>}
  */
 function mutate(parser) {
+  if (!parser) {
+    throw new Error(
+      'Expected `parser` (such as from `retext-english` or `parse-english`) or `processor` (a unified pipeline) as `options`'
+    )
+  }
+
   // Assume the parser is a retext parser.
   const Parser = /** @type {ParserInstance|ParserConstructor} */ (parser)
   return (node, file) => toNlcst(node, file, Parser)
