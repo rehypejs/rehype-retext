@@ -46,7 +46,7 @@ and `an` are used correctly, or [`retext-readability`][retext-readability] which
 checks that sentences are not too complex.
 This plugins lets you use them on HTML documents.
 
-This plugin is unfortunately not able to apply changes by retext plugins (such
+This plugin is not able to apply changes by retext plugins (such
 as done by `retext-smartypants`) to the HTML content.
 
 This plugin is built on [`hast-util-to-nlcst`][hast-util-to-nlcst], which does
