@@ -63,17 +63,17 @@ In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 npm install rehype-retext
 ```
 
-In Deno with [Skypack][]:
+In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import rehypeRetext from 'https://cdn.skypack.dev/rehype-retext@3?dts'
+import rehypeRetext from 'https://esm.sh/rehype-retext@3'
 ```
 
-In browsers with [Skypack][]:
+In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import rehypeRetext from 'https://cdn.skypack.dev/rehype-retext@3?min'
+  import rehypeRetext from 'https://esm.sh/rehype-retext@3?bundle'
 </script>
 ```
 
@@ -241,7 +241,7 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[skypack]: https://www.skypack.dev
+[esmsh]: https://esm.sh
 
 [health]: https://github.com/rehypejs/.github
 
