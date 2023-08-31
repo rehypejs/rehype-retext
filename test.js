@@ -2,11 +2,11 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {ParseEnglish} from 'parse-english'
 import rehypeParse from 'rehype-parse'
+import rehypeRetext from 'rehype-retext'
 import rehypeStringify from 'rehype-stringify'
 import retextEnglish from 'retext-english'
 import retextStringify from 'retext-stringify'
 import {unified} from 'unified'
-import rehypeRetext from './index.js'
 
 const doc = [
   '<!doctype html>',
@@ -23,7 +23,7 @@ const doc = [
 
 test('rehypeRetext', async function (t) {
   await t.test('should expose the public api', async function () {
-    assert.deepEqual(Object.keys(await import('./index.js')).sort(), [
+    assert.deepEqual(Object.keys(await import('rehype-retext')).sort(), [
       'default'
     ])
   })
