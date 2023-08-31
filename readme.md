@@ -17,7 +17,7 @@
 *   [Install](#install)
 *   [Use](#use)
 *   [API](#api)
-    *   [`unified().use(rehypeRetext, destination)`](#unifieduserehyperetext-destination)
+    *   [`unified().use(rehypeRetext, options)`](#unifieduserehyperetext-options)
 *   [Types](#types)
 *   [Compatibility](#compatibility)
 *   [Security](#security)
@@ -56,8 +56,8 @@ internals away.
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
-In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
+This package is [ESM only][esm].
+In Node.js (version 16+), install with [npm][]:
 
 ```sh
 npm install rehype-retext
@@ -91,47 +91,43 @@ Say we have the following file `example.html`:
 </article>
 ```
 
-And our module `example.js` looks as follows:
+…and our module `example.js` looks as follows:
 
 ```js
-import {read} from 'to-vfile'
-import {reporter} from 'vfile-reporter'
-import {unified} from 'unified'
 import rehypeParse from 'rehype-parse'
 import rehypePresetMinify from 'rehype-preset-minify'
-import rehypeStringify from 'rehype-stringify'
 import rehypeRetext from 'rehype-retext'
+import rehypeStringify from 'rehype-stringify'
 import retextEnglish from 'retext-english'
 import retextIndefiniteArticle from 'retext-indefinite-article'
 import retextRepeatedWords from 'retext-repeated-words'
+import {read} from 'to-vfile'
+import {unified} from 'unified'
+import {reporter} from 'vfile-reporter'
 
-main()
+const file = await unified()
+  .use(rehypeParse)
+  .use(
+    rehypeRetext,
+    unified()
+      .use(retextEnglish)
+      .use(retextIndefiniteArticle)
+      .use(retextRepeatedWords)
+  )
+  .use(rehypePresetMinify)
+  .use(rehypeStringify)
+  .process(await read('example.html'))
 
-async function main() {
-  const file = await unified()
-    .use(rehypeParse)
-    .use(
-      rehypeRetext,
-      unified()
-        .use(retextEnglish)
-        .use(retextIndefiniteArticle)
-        .use(retextRepeatedWords)
-    )
-    .use(rehypePresetMinify)
-    .use(rehypeStringify)
-    .process(await read('example.html'))
-
-  console.error(reporter(file))
-  console.log(String(file))
-}
+console.error(reporter([file]))
+console.log(String(file))
 ```
 
-Now running `node example.js` yields:
+…then running `node example.js` yields:
 
 ```html
 example.html
-    5:3-5:4  warning  Use `An` before `implicit`, not `A`  retext-indefinite-article  retext-indefinite-article
-  6:12-6:19  warning  Expected `and` once, not twice       and                        retext-repeated-words
+5:3-5:4   warning Use `An` before `implicit`, not `A` retext-indefinite-article retext-indefinite-article
+6:12-6:19 warning Expected `and` once, not twice      and                       retext-repeated-words
 
 ⚠ 2 warnings
 ```
@@ -143,42 +139,47 @@ example.html
 ## API
 
 This package exports no identifiers.
-The default export is `rehypeRetext`.
+The default export is [`rehypeRetext`][api-rehype-retext].
 
-### `unified().use(rehypeRetext, destination)`
+### `unified().use(rehypeRetext, options)`
 
-**[rehype][]** plugin to support **[retext][]**.
-There are no options but `destination` is required.
+Bridge or mutate to retext.
 
-###### `destination`
+###### Parameters
 
-`destination` is either a parser or a processor.
+*   `options` ([`Parser`][unified-parser] or [`Processor`][unified-processor])
+    — configuration (required)
 
-*   If a destination [processor][] is given, runs the plugins attached to it
-    with the new nlcst tree ([*bridge mode*][bridge]).
-    This given processor must have a parser attached (this can be done by using
-    the plugin `retext-english` or similar) and should use other retext plugins
-*   If a parser is given, runs further plugins attached to the same processor
-    with the new tree (*mutate mode*).
-    Such parsers are exported by packages like `retext-english` as `Parser`.
-    You should use other retext plugins after `rehype-retext`.
+###### Returns
 
-As HTML defines paragraphs, that definition is used for
-[**Paragraph**][paragraph]s: `<p>` and `<h1-6>` are explicitly
-supported, and implicit paragraphs in flow content are also supported.
+Transform ([`Transformer`][unified-transformer]).
+
+###### Notes
+
+*   if a [processor][unified-processor] is given, uses its parser to create a
+    new nlcst tree, then runs the plugins attached to with that
+    (*[bridge mode][unified-mode]*); you can add a parser to processor for
+    example with `retext-english`; other plugins used on the processor should
+    be retext plugins
+*   if a [parser][unified-parser] is given, uses it to create a new nlcst tree,
+    and returns it (*[mutate mode][unified-mode]*); you can get a parser by
+    importing `Parser` from `retext-english` for example;  other plugins used
+    after `rehypeRetext` should be retext plugins
 
 ## Types
 
 This package is fully typed with [TypeScript][].
-It exports the `Parser` and `Processor` types, which specify the interfaces of
-the accepted destination.
+It exports no additional types.
 
 ## Compatibility
 
-Projects maintained by the unified collective are compatible with all maintained
+Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
-As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
-Our projects sometimes work with older versions, but this is not guaranteed.
+
+When we cut a new major release, we drop support for unmaintained versions of
+Node.
+This means we try to keep the current release line, `rehype-retext@^3`,
+compatible with Node.js 12.
 
 This plugin works with `unified` version 6+, `rehype` version 4+, and `retext`
 version 7+.
@@ -225,9 +226,9 @@ abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/rehype-retext
 
-[size-badge]: https://img.shields.io/bundlephobia/minzip/rehype-retext.svg
+[size-badge]: https://img.shields.io/bundlejs/size/rehype-retext
 
-[size]: https://bundlephobia.com/result?p=rehype-retext
+[size]: https://bundlejs.com/?q=rehype-retext
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
@@ -241,15 +242,17 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
 [esmsh]: https://esm.sh
 
 [health]: https://github.com/rehypejs/.github
 
-[contributing]: https://github.com/rehypejs/.github/blob/HEAD/contributing.md
+[contributing]: https://github.com/rehypejs/.github/blob/main/contributing.md
 
-[support]: https://github.com/rehypejs/.github/blob/HEAD/support.md
+[support]: https://github.com/rehypejs/.github/blob/main/support.md
 
-[coc]: https://github.com/rehypejs/.github/blob/HEAD/code-of-conduct.md
+[coc]: https://github.com/rehypejs/.github/blob/main/code-of-conduct.md
 
 [license]: license
 
@@ -257,22 +260,26 @@ abide by its terms.
 
 [typescript]: https://www.typescriptlang.org
 
-[unified]: https://github.com/unifiedjs/unified
+[hast-util-to-nlcst]: https://github.com/syntax-tree/hast-util-to-nlcst
 
 [rehype]: https://github.com/rehypejs/rehype
 
 [retext]: https://github.com/retextjs/retext
 
-[processor]: https://github.com/unifiedjs/unified#processor
-
-[bridge]: https://github.com/unifiedjs/unified#processing-between-syntaxes
-
-[paragraph]: https://github.com/syntax-tree/nlcst#paragraph
-
-[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
-
 [retext-indefinite-article]: https://github.com/retextjs/retext-indefinite-article
 
 [retext-readability]: https://github.com/retextjs/retext-readability
 
-[hast-util-to-nlcst]: https://github.com/syntax-tree/hast-util-to-nlcst
+[unified]: https://github.com/unifiedjs/unified
+
+[unified-mode]: https://github.com/unifiedjs/unified#transforming-between-ecosystems
+
+[unified-parser]: https://github.com/unifiedjs/unified#parser
+
+[unified-processor]: https://github.com/unifiedjs/unified#processor
+
+[unified-transformer]: https://github.com/unifiedjs/unified#transformer
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[api-rehype-retext]: #unifieduserehyperetext-options
