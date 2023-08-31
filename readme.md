@@ -66,14 +66,14 @@ npm install rehype-retext
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import rehypeRetext from 'https://esm.sh/rehype-retext@3'
+import rehypeRetext from 'https://esm.sh/rehype-retext@4'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import rehypeRetext from 'https://esm.sh/rehype-retext@3?bundle'
+  import rehypeRetext from 'https://esm.sh/rehype-retext@4?bundle'
 </script>
 ```
 
