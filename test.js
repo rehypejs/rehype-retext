@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import {unified} from 'unified'
-import rehypeParse from 'rehype-parse'
 import {ParseEnglish} from 'parse-english'
-import retextEnglish from 'retext-english'
+import rehypeParse from 'rehype-parse'
 import rehypeStringify from 'rehype-stringify'
+import retextEnglish from 'retext-english'
 import retextStringify from 'retext-stringify'
+import {unified} from 'unified'
 import rehypeRetext from './index.js'
 
 const doc = [
@@ -22,6 +22,12 @@ const doc = [
 ].join('\n')
 
 test('rehypeRetext', async function (t) {
+  await t.test('should expose the public api', async function () {
+    assert.deepEqual(Object.keys(await import('./index.js')).sort(), [
+      'default'
+    ])
+  })
+
   await t.test('should throw when w/o parser or processor', async function () {
     assert.throws(function () {
       // @ts-expect-error: check how missing options is handled.
