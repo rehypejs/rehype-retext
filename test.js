@@ -39,7 +39,6 @@ test('rehypeRetext', async function (t) {
     const file = await unified()
       .use(rehypeParse, {fragment: true})
       .use(rehypeRetext, ParseEnglish)
-      // @ts-expect-error: to do: remove this when `retext-stringify` is released.
       .use(retextStringify)
       .process(document)
 
