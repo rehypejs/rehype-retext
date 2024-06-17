@@ -12,18 +12,18 @@
 
 ## Contents
 
-*   [What is this?](#what-is-this)
-*   [When should I use this?](#when-should-i-use-this)
-*   [Install](#install)
-*   [Use](#use)
-*   [API](#api)
-    *   [`unified().use(rehypeRetext, options)`](#unifieduserehyperetext-options)
-*   [Types](#types)
-*   [Compatibility](#compatibility)
-*   [Security](#security)
-*   [Related](#related)
-*   [Contribute](#contribute)
-*   [License](#license)
+* [What is this?](#what-is-this)
+* [When should I use this?](#when-should-i-use-this)
+* [Install](#install)
+* [Use](#use)
+* [API](#api)
+  * [`unified().use(rehypeRetext, options)`](#unifieduserehyperetext-options)
+* [Types](#types)
+* [Compatibility](#compatibility)
+* [Security](#security)
+* [Related](#related)
+* [Contribute](#contribute)
+* [License](#license)
 
 ## What is this?
 
@@ -147,8 +147,8 @@ Bridge or mutate to retext.
 
 ###### Parameters
 
-*   `options` ([`Parser`][unified-parser] or [`Processor`][unified-processor])
-    — configuration (required)
+* `options` ([`Parser`][unified-parser] or [`Processor`][unified-processor])
+  — configuration (required)
 
 ###### Returns
 
@@ -156,15 +156,15 @@ Transform ([`Transformer`][unified-transformer]).
 
 ###### Notes
 
-*   if a [processor][unified-processor] is given, uses its parser to create a
-    new nlcst tree, then runs the plugins attached to with that
-    (*[bridge mode][unified-mode]*); you can add a parser to processor for
-    example with `retext-english`; other plugins used on the processor should
-    be retext plugins
-*   if a [parser][unified-parser] is given, uses it to create a new nlcst tree,
-    and returns it (*[mutate mode][unified-mode]*); you can get a parser by
-    importing `Parser` from `retext-english` for example;  other plugins used
-    after `rehypeRetext` should be retext plugins
+* if a [processor][unified-processor] is given, uses its parser to create a
+  new nlcst tree, then runs the plugins attached to with that
+  (*[bridge mode][unified-mode]*); you can add a parser to processor for
+  example with `retext-english`; other plugins used on the processor should
+  be retext plugins
+* if a [parser][unified-parser] is given, uses it to create a new nlcst tree,
+  and returns it (*[mutate mode][unified-mode]*); you can get a parser by
+  importing `Parser` from `retext-english` for example;  other plugins used
+  after `rehypeRetext` should be retext plugins
 
 ## Types
 
@@ -191,12 +191,12 @@ version 7+.
 
 ## Related
 
-*   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
-    — rehype plugin to turn HTML into markdown
-*   [`remark-retext`](https://github.com/remarkjs/remark-retext)
-    — remark plugin to support retext
-*   [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
-    — remark plugin to turn markdown into HTML
+* [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
+  — rehype plugin to turn HTML into markdown
+* [`remark-retext`](https://github.com/remarkjs/remark-retext)
+  — remark plugin to support retext
+* [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
+  — remark plugin to turn markdown into HTML
 
 ## Contribute
 

@@ -8,7 +8,7 @@ import retextEnglish from 'retext-english'
 import retextStringify from 'retext-stringify'
 import {unified} from 'unified'
 
-const doc = [
+const document = [
   '<!doctype html>',
   '<html>',
   '  <head>',
@@ -41,7 +41,7 @@ test('rehypeRetext', async function (t) {
       .use(rehypeRetext, ParseEnglish)
       // @ts-expect-error: to do: remove this when `retext-stringify` is released.
       .use(retextStringify)
-      .process(doc)
+      .process(document)
 
     assert.equal(String(file), 'Bravo')
   })
@@ -52,7 +52,7 @@ test('rehypeRetext', async function (t) {
       // @ts-expect-error: to do: remove this when `retext-stringify` is released, hopefully.
       .use(rehypeRetext, unified().use(retextEnglish))
       .use(rehypeStringify)
-      .process(doc)
+      .process(document)
 
     assert.equal(
       String(file),
