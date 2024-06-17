@@ -126,8 +126,8 @@ console.log(String(file))
 
 ```html
 example.html
-5:3-5:4   warning Use `An` before `implicit`, not `A` retext-indefinite-article retext-indefinite-article
-6:12-6:19 warning Expected `and` once, not twice      and                       retext-repeated-words
+5:3-5:4   warning Unexpected article `A` before `implicit`, expected `An` retext-indefinite-article retext-indefinite-article
+6:12-6:19 warning Unexpected repeated `and`, remove one occurrence        and                       retext-repeated-words
 
 ⚠ 2 warnings
 ```
