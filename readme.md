@@ -1,14 +1,11 @@
 # rehype-retext
 
-[![Build][build-badge]][build]
-[![Coverage][coverage-badge]][coverage]
-[![Downloads][downloads-badge]][downloads]
-[![Size][size-badge]][size]
-[![Sponsors][sponsors-badge]][collective]
-[![Backers][backers-badge]][collective]
-[![Chat][chat-badge]][chat]
+[![Build][badge-build-image]][badge-build-url]
+[![Coverage][badge-coverage-image]][badge-coverage-url]
+[![Downloads][badge-downloads-image]][badge-downloads-url]
+[![Size][badge-size-image]][badge-size-url]
 
-**[rehype][]** plugin to support **[retext][]**.
+**[rehype][github-rehype]** plugin to support **[retext][github-retext]**.
 
 ## Contents
 
@@ -27,7 +24,8 @@
 
 ## What is this?
 
-This package is a [unified][] ([rehype][]) plugin to support [retext][].
+This package is a [unified][github-unified] ([rehype][github-rehype])
+plugin to support [retext][github-retext].
 
 **unified** is a project that transforms content with abstract syntax trees
 (ASTs).
@@ -41,23 +39,24 @@ This is a rehype plugin that transforms hast into nlcst to support retext.
 
 This project is useful if you want to check natural language in HTML.
 The retext ecosystem has many useful plugins to check prose, such as
-[`retext-indefinite-article`][retext-indefinite-article] which checks that `a`
-and `an` are used correctly, or [`retext-readability`][retext-readability] which
+[`retext-indefinite-article`][github-retext-indefinite-article]
+which checks that `a` and `an` are used correctly,
+or [`retext-readability`][github-retext-readability] which
 checks that sentences are not too complex.
 This plugins lets you use them on HTML documents.
 
 This plugin is not able to apply changes by retext plugins (such
 as done by `retext-smartypants`) to the HTML content.
 
-This plugin is built on [`hast-util-to-nlcst`][hast-util-to-nlcst], which does
-the work on syntax trees.
+This plugin is built on [`hast-util-to-nlcst`][github-hast-util-to-nlcst],
+which does the work on syntax trees.
 rehype focusses on making it easier to transform content by abstracting such
 internals away.
 
 ## Install
 
-This package is [ESM only][esm].
-In Node.js (version 16+), install with [npm][]:
+This package is [ESM only][github-gist-esm].
+In Node.js (version 16+), install with [npm][npmjs-install]:
 
 ```sh
 npm install rehype-retext
@@ -147,22 +146,25 @@ Bridge or mutate to retext.
 
 ###### Parameters
 
-* `options` ([`Parser`][unified-parser] or [`Processor`][unified-processor])
+* `options`
+  ([`Parser`][github-unified-parser] or
+  [`Processor`][github-unified-processor])
   — configuration (required)
 
 ###### Returns
 
-Transform ([`Transformer`][unified-transformer]).
+Transform ([`Transformer`][github-unified-transformer]).
 
 ###### Notes
 
-* if a [processor][unified-processor] is given, uses its parser to create a
-  new nlcst tree, then runs the plugins attached to with that
-  (*[bridge mode][unified-mode]*); you can add a parser to processor for
+* if a [processor][github-unified-processor] is given, uses its parser to
+  create a new nlcst tree, then runs the plugins attached to with that
+  (*[bridge mode][github-unified-mode]*); you can add a parser to processor for
   example with `retext-english`; other plugins used on the processor should
   be retext plugins
-* if a [parser][unified-parser] is given, uses it to create a new nlcst tree,
-  and returns it (*[mutate mode][unified-mode]*); you can get a parser by
+* if a [parser][github-unified-parser] is given, uses it to create a new nlcst
+  tree,
+  and returns it (*[mutate mode][github-unified-mode]*); you can get a parser by
   importing `Parser` from `retext-english` for example;  other plugins used
   after `rehypeRetext` should be retext plugins
 
@@ -187,7 +189,7 @@ version 7+.
 ## Security
 
 `rehype-retext` does not change the syntax tree so there are no openings for
-[cross-site scripting (XSS)][xss] attacks.
+[cross-site scripting (XSS)][wikipedia-xss] attacks.
 
 ## Related
 
@@ -200,86 +202,76 @@ version 7+.
 
 ## Contribute
 
-See [`contributing.md`][contributing] in [`rehypejs/.github`][health] for ways
-to get started.
-See [`support.md`][support] for ways to get help.
+See [`contributing.md`][health-contributing] in [`rehypejs/.github`][health]
+for ways to get started.
+See [`support.md`][health-support] for ways to get help.
 
-This project has a [code of conduct][coc].
+This project has a [code of conduct][health-coc].
 By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 ## License
 
-[MIT][license] © [Titus Wormer][author]
+[MIT][file-license] © [Titus Wormer][wooorm]
 
 <!-- Definitions -->
 
-[build-badge]: https://github.com/rehypejs/rehype-retext/workflows/main/badge.svg
+[api-rehype-retext]: #unifieduserehyperetext-options
 
-[build]: https://github.com/rehypejs/rehype-retext/actions
+[badge-build-image]: https://github.com/rehypejs/rehype-retext/workflows/main/badge.svg
 
-[coverage-badge]: https://img.shields.io/codecov/c/github/rehypejs/rehype-retext.svg
+[badge-build-url]: https://github.com/rehypejs/rehype-retext/actions
 
-[coverage]: https://codecov.io/github/rehypejs/rehype-retext
+[badge-coverage-image]: https://img.shields.io/codecov/c/github/rehypejs/rehype-retext.svg
 
-[downloads-badge]: https://img.shields.io/npm/dm/rehype-retext.svg
+[badge-coverage-url]: https://codecov.io/github/rehypejs/rehype-retext
 
-[downloads]: https://www.npmjs.com/package/rehype-retext
+[badge-downloads-image]: https://img.shields.io/npm/dm/rehype-retext.svg
 
-[size-badge]: https://img.shields.io/bundlejs/size/rehype-retext
+[badge-downloads-url]: https://www.npmjs.com/package/rehype-retext
 
-[size]: https://bundlejs.com/?q=rehype-retext
+[badge-size-image]: https://img.shields.io/bundlejs/size/rehype-retext
 
-[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
-
-[backers-badge]: https://opencollective.com/unified/backers/badge.svg
-
-[collective]: https://opencollective.com/unified
-
-[chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg
-
-[chat]: https://github.com/rehypejs/rehype/discussions
-
-[npm]: https://docs.npmjs.com/cli/install
-
-[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+[badge-size-url]: https://bundlejs.com/?q=rehype-retext
 
 [esmsh]: https://esm.sh
 
+[file-license]: license
+
+[github-gist-esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+[github-hast-util-to-nlcst]: https://github.com/syntax-tree/hast-util-to-nlcst
+
+[github-rehype]: https://github.com/rehypejs/rehype
+
+[github-retext]: https://github.com/retextjs/retext
+
+[github-retext-indefinite-article]: https://github.com/retextjs/retext-indefinite-article
+
+[github-retext-readability]: https://github.com/retextjs/retext-readability
+
+[github-unified]: https://github.com/unifiedjs/unified
+
+[github-unified-mode]: https://github.com/unifiedjs/unified#transforming-between-ecosystems
+
+[github-unified-parser]: https://github.com/unifiedjs/unified#parser
+
+[github-unified-processor]: https://github.com/unifiedjs/unified#processor
+
+[github-unified-transformer]: https://github.com/unifiedjs/unified#transformer
+
 [health]: https://github.com/rehypejs/.github
 
-[contributing]: https://github.com/rehypejs/.github/blob/main/contributing.md
+[health-coc]: https://github.com/rehypejs/.github/blob/main/code-of-conduct.md
 
-[support]: https://github.com/rehypejs/.github/blob/main/support.md
+[health-contributing]: https://github.com/rehypejs/.github/blob/main/contributing.md
 
-[coc]: https://github.com/rehypejs/.github/blob/main/code-of-conduct.md
+[health-support]: https://github.com/rehypejs/.github/blob/main/support.md
 
-[license]: license
-
-[author]: https://wooorm.com
+[npmjs-install]: https://docs.npmjs.com/cli/install
 
 [typescript]: https://www.typescriptlang.org
 
-[hast-util-to-nlcst]: https://github.com/syntax-tree/hast-util-to-nlcst
+[wikipedia-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
 
-[rehype]: https://github.com/rehypejs/rehype
-
-[retext]: https://github.com/retextjs/retext
-
-[retext-indefinite-article]: https://github.com/retextjs/retext-indefinite-article
-
-[retext-readability]: https://github.com/retextjs/retext-readability
-
-[unified]: https://github.com/unifiedjs/unified
-
-[unified-mode]: https://github.com/unifiedjs/unified#transforming-between-ecosystems
-
-[unified-parser]: https://github.com/unifiedjs/unified#parser
-
-[unified-processor]: https://github.com/unifiedjs/unified#processor
-
-[unified-transformer]: https://github.com/unifiedjs/unified#transformer
-
-[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
-
-[api-rehype-retext]: #unifieduserehyperetext-options
+[wooorm]: https://wooorm.com
