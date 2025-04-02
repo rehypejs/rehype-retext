@@ -1,38 +1,8 @@
 {
-  "name": "rehype-retext",
-  "version": "5.0.0",
-  "description": "rehype plugin to transform to retext",
-  "license": "MIT",
-  "keywords": [
-    "hast",
-    "html",
-    "langauge",
-    "natural",
-    "nlcst",
-    "rehype",
-    "rehype-plugin",
-    "retext",
-    "retext-plugin",
-    "unified"
-  ],
-  "repository": "rehypejs/rehype-retext",
-  "bugs": "https://github.com/rehypejs/rehype-retext/issues",
-  "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/unified"
-  },
   "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
+  "bugs": "https://github.com/rehypejs/rehype-retext/issues",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
-  ],
-  "sideEffects": false,
-  "type": "module",
-  "exports": "./index.js",
-  "files": [
-    "lib/",
-    "index.d.ts.map",
-    "index.d.ts",
-    "index.js"
   ],
   "dependencies": {
     "@types/hast": "^3.0.0",
@@ -42,6 +12,7 @@
     "unified": "^11.0.0",
     "vfile": "^6.0.0"
   },
+  "description": "rehype plugin to transform to retext",
   "devDependencies": {
     "@types/node": "^22.0.0",
     "c8": "^10.0.0",
@@ -57,14 +28,32 @@
     "typescript": "^5.0.0",
     "xo": "^0.60.0"
   },
-  "scripts": {
-    "build": "tsc --build --clean && tsc --build && type-coverage",
-    "format": "remark . --frail --output --quiet && prettier . --log-level warn --write && xo --fix",
-    "prepack": "npm run build && npm run format",
-    "test": "npm run build && npm run format && npm run test-coverage",
-    "test-api": "node --conditions development test.js",
-    "test-coverage": "c8 --100 --check-coverage --reporter lcov npm run test-api"
+  "exports": "./index.js",
+  "files": [
+    "index.d.ts.map",
+    "lib/",
+    "index.d.ts",
+    "index.js"
+  ],
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/unified"
   },
+  "keywords": [
+    "hast",
+    "html",
+    "langauge",
+    "natural",
+    "nlcst",
+    "rehype-plugin",
+    "rehype",
+    "retext-plugin",
+    "retext",
+    "unified"
+  ],
+  "license": "MIT",
+  "name": "rehype-retext",
+  "repository": "rehypejs/rehype-retext",
   "prettier": {
     "bracketSpacing": false,
     "singleQuote": true,
@@ -78,12 +67,20 @@
       "remark-preset-wooorm"
     ]
   },
+  "scripts": {
+    "build": "tsc --build --clean && tsc --build && type-coverage",
+    "format": "remark --frail --output --quiet -- . && prettier --log-level warn --write -- . && xo --fix",
+    "test": "npm run build && npm run format && npm run test-coverage",
+    "test-api": "node --conditions development test.js",
+    "test-coverage": "c8 --100 --reporter lcov -- npm run test-api"
+  },
+  "sideEffects": false,
   "typeCoverage": {
     "atLeast": 100,
-    "detail": true,
-    "ignoreCatch": true,
     "strict": true
   },
+  "type": "module",
+  "version": "5.0.0",
   "xo": {
     "prettier": true
   }
