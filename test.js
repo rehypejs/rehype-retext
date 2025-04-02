@@ -48,7 +48,6 @@ test('rehypeRetext', async function (t) {
   await t.test('should bridge', async function () {
     const file = await unified()
       .use(rehypeParse)
-      // @ts-expect-error: to do: remove this when `retext-stringify` is released, hopefully.
       .use(rehypeRetext, unified().use(retextEnglish))
       .use(rehypeStringify)
       .process(document)
