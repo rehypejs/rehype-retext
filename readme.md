@@ -38,7 +38,8 @@ This is a rehype plugin that transforms hast into nlcst to support retext.
 ## When should I use this?
 
 This project is useful if you want to check natural language in HTML.
-The retext ecosystem has many useful plugins to check prose, such as
+The retext ecosystem has many useful plugins to check prose,
+such as
 [`retext-indefinite-article`][github-retext-indefinite-article]
 which checks that `a` and `an` are used correctly,
 or [`retext-readability`][github-retext-readability] which
@@ -56,7 +57,8 @@ internals away.
 ## Install
 
 This package is [ESM only][github-gist-esm].
-In Node.js (version 16+), install with [npm][npmjs-install]:
+In Node.js (version 16+),
+install with [npm][npmjs-install]:
 
 ```sh
 npm install rehype-retext
@@ -157,16 +159,18 @@ Transform ([`Transformer`][github-unified-transformer]).
 
 ###### Notes
 
-* if a [processor][github-unified-processor] is given, uses its parser to
-  create a new nlcst tree, then runs the plugins attached to with that
-  (*[bridge mode][github-unified-mode]*); you can add a parser to processor for
-  example with `retext-english`; other plugins used on the processor should
-  be retext plugins
-* if a [parser][github-unified-parser] is given, uses it to create a new nlcst
-  tree,
-  and returns it (*[mutate mode][github-unified-mode]*); you can get a parser by
-  importing `Parser` from `retext-english` for example;  other plugins used
-  after `rehypeRetext` should be retext plugins
+* if a [processor][github-unified-processor] is given,
+  uses its parser to create a new nlcst tree,
+  then runs the plugins attached to with that
+  (*[bridge mode][github-unified-mode]*);
+  you can add a parser to processor for example with `retext-english`;
+  other plugins used on the processor should be retext plugins
+* if a [parser][github-unified-parser] is given,
+  uses it to create a new nlcst tree,
+  and returns it
+  (*[mutate mode][github-unified-mode]*);
+  you can get a parser by importing `Parser` from `parse-english` for example;
+  other plugins used after `rehypeRetext` should be retext plugins
 
 ## Types
 
@@ -178,13 +182,15 @@ It exports no additional types.
 Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
 
-When we cut a new major release, we drop support for unmaintained versions of
-Node.
-This means we try to keep the current release line, `rehype-retext@5`,
+When we cut a new major release,
+we drop support for unmaintained versions of Node.
+This means we try to keep the current release line,
+`rehype-retext@5`,
 compatible with Node.js 16.
 
-This plugin works with `unified` version 6+, `rehype` version 4+, and `retext`
-version 7+.
+This plugin works with `unified` version 6+,
+`rehype` version 4+,
+and `retext` version 7+.
 
 ## Security
 
@@ -207,8 +213,9 @@ for ways to get started.
 See [`support.md`][health-support] for ways to get help.
 
 This project has a [code of conduct][health-coc].
-By interacting with this repository, organization, or community you agree to
-abide by its terms.
+By interacting with this repository,
+organization,
+or community you agree to abide by its terms.
 
 ## License
 
